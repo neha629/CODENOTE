@@ -1,53 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h> 
+#define ll long long
 using namespace std;
-#define ll long long int
-ll INF = LLONG_MAX;
-vector<vector<ll>> dis;
-
-void floyd_warshall(ll n)
+ll mod=1000000007;
+string s;
+ll n,ans=0;
+bool isSafe(ll i, ll j)
 {
-    for(ll k=0;k<n;k++)
-    {
-        for(ll i=0;i<n;i++)
-        {
-            for(ll j=0;j<n;j++)
-            {
-                if(dis[i][k]!=INF && dis[k][j]!=INF)
-                {
-                    dis[i][j]=min(dis[i][j],dis[i][k]+dis[k][j]);
-                }
-            }
-        }
-    }
+   if(i>=0 && i<7 && j>=0 && j<7)
+    return true;
+  return false;
 }
-
-int main()
+void func(ll i,ll j,char ch,ll c)
 {
-    ll t;
-    cin>>t;
-    for(ll k=1;k<=t;k++)
-    {
-        ll n,q,ans=0,u,v;
-        cin>>n;
-        dis.resize(n);
-        for(ll i=0;i<n;i++)
-           dis[i].assign(n,INF);
-    
-       for(ll i=0;i<n;i++)
-       {
-            for(ll j=0;j<n;j++)
-            {
-                cin>>dis[i][j];
-            }
-       }
-       floyd_warshall(n);
-       cin>>q;
-       while(q--)
-       {
-          cin>>u>>v;
-          ans+=dis[u-1][v-1];
-       }
-       cout<<"Case #"<<k<<": "<<ans<<endl;
-    }
-    return 0;
+   if(c==n)
+   {
+     ans++;
+     return;
+   }
+   if(!isSafe(i,j)
+     return;
+   if(s[c]=='?' || s[c]==ch)
+   {
+      func(i,j-1,'L',c+1);
+      func(i-1,j,'U',c+1);
+      func(i,j+1,'R',c+1);
+      func(i+1,j,'D',c+1);
+   }
+   else
+    return;
+}
+int main() 
+{ 
+  std::ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cin>>s;
+  n = s.length();
+  ll c=0,ans;
+  ll i=0,j=0;
+  func(i,j-1,'L',0);
+  func(i-1,j,'U',0);
+  func(i,j+1,'R',0);
+  func(i+1,j,'D',0);
+  return 0; 
 }
