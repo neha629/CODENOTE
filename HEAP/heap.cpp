@@ -67,7 +67,7 @@ void delete_key(ll i)
 
 void build(ll n)
 {
-	size += n;
+	size = n;
 	for(ll i=(n-1)/2;i>=0;i--)
 		heapify(i);
 }

@@ -21,14 +21,12 @@ void dfs(ll v)
 }
 int main()
 {
-    ll n,q,u,v,ans=0;
-    cin>>n>>q;
+    ll n,u,v,ans=0;
+    cin>>n;
     adj.resize(n+1);
-    pair<ll,ll> edge[n+1];
     for(ll i=0;i<n-1;i++)
     {
         cin>>u>>v;
-        edge[i+1] = {u,v};
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
@@ -37,15 +35,6 @@ int main()
     for(ll i=1;i<=n;i++)
        if(!vis[i])
         dfs(i);
-    while(q--)
-    {
-        ll e,i,j;
-        cin>>e;
-        pair<ll,ll> p = edge[e];
-        i=p.first;
-        j=p.second;
-        ans = min(child[i],child[j]);
-        cout<<ans * (n-ans)<<endl;
-    }
+    
     return 0;
 }

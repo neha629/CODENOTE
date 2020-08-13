@@ -6,7 +6,7 @@ vector<ll> dis,p;
 ll INF = LLONG_MAX;
 vector<ll> ans;
 
-void dijkstra(ll s,ll d)
+void dijkstra(ll s)
 {
     dis[s]=0;
     using pt = pair<ll,ll>;
@@ -14,21 +14,25 @@ void dijkstra(ll s,ll d)
     q.push({0,s});
     while(!q.empty())
     {
-        ll v=q.top().second;
+        ll u = q.top().second;
+        ll l = q.top().first;
         q.pop();
-        for(auto it:adj[v])
+        if(dis[u]!=l)
+                continue;
+        for(auto it:adj[u])
         {
-            ll to=it.second;
-            ll len=it.first;
-            if(dis[to]>dis[v]+len)
+            ll v = it.first;
+            ll len = it.second;
+            if(dis[v]>dis[u]+len)
             {
-                 dis[to]=dis[v]+len;
-                 q.push({dis[to],to});
-                 p[to]=v;
+                dis[v] = dis[u] + len;
+                q.push({dis[v],v});
+                p[v] = u;
             }
         }
-    }
+    } 
 }
+
 void printpath(ll s,ll d)
 {
     for(ll i=d;i!=s;i=p[i])
@@ -38,6 +42,7 @@ void printpath(ll s,ll d)
     for(auto it:ans)
         cout<<it<<" ";
 }
+
 int main()
 {
     ll n,e,l,u,v,s,d;
@@ -46,14 +51,14 @@ int main()
     for(ll i=0;i<e;i++)
     {
         cin>>u>>v>>l;
-        adj[u].push_back({l,v});
+        adj[u].push_back({v,l});
         // adj[v].push_back({l,u});
     }
     p.assign(n+1,-1);
     dis.assign(n+1,INF);
     s=1;
     d=n;
-    dijkstra(s,d);
+    dijkstra(s);
     if(dis[d]==INF)
         cout<<"-1";
     else

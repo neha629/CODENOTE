@@ -48,7 +48,7 @@ int main()
      	}
      }
 
-     cout<<ans<<endl;
+     cout<<fixed<<setprecision(2)<<ans<<endl;
 
   }
  return 0; 
