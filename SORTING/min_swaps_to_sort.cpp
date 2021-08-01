@@ -28,7 +28,7 @@ void min_swaps(ll a[],ll n)
 		{
 			vis[j] = true; 
 			j = m[j].second;
-            cycle++;
+      cycle++;
 		}
 
 		if(cycle>0)

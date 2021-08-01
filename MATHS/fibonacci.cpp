@@ -78,5 +78,5 @@ pair<ll, ll> fibo_pair(ll n)
 
 int main() 
 { 
-   fibo_matrix(5);
+   cout<<fibo_formula(4)<<endl;
 }

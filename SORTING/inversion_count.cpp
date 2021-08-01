@@ -1,3 +1,5 @@
+// When a smaller number comes after a larger number in the set, which violates the ascending order.
+
 #include <bits/stdc++.h> 
 #define ll long long int
 using namespace std;

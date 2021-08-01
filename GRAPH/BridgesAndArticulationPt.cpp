@@ -58,8 +58,8 @@ int main()
     	adj[v].push_back(u);
     }
     findf(n);
-    for(auto i:bridges)
-        cout<<i.first<<" "<<i.second<<endl;
+    // for(auto i:bridges)
+    //     cout<<i.first<<" "<<i.second<<endl;
     for(auto i:cutpt)
         cout<<i<<endl;
 	return 0;

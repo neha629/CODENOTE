@@ -42,7 +42,7 @@ int knap01(vector<int> &val, vector<int> &wt, int W)
     return dp[n][W];
 }
 
-//Unbounded Knapsack
+//Unbounded Knapsack https://www.interviewbit.com/problems/tushars-birthday-party/
 int solve(const vector<int> &A, const vector<int> &wt, const vector<int> &val) {
     int res = 0, n = val.size();
     int W = *max_element(A.begin(),A.end());

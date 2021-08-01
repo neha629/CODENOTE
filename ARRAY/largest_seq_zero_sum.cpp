@@ -22,9 +22,6 @@ vector<int> lszero(vector<int> &A) {
     }
     if(res == 0)
         return ans;
-    for(int i=s;i<=e;i++)
-    {
-        ans.push_back(A[i]);
-    }
+    ans.assign(A.begin()+s,A.begin()+e+1);
     return ans;
 }
